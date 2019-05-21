@@ -1,0 +1,10 @@
+easy_admin:
+    disabled_actions: ['show']
+    entities:
+        Categorie:
+            class: AppBundle\Entity\Categorie
+            label: 'Liste des categories'
+            list:
+                fields:
+                    - "id"
+                    - "nomCategorie"

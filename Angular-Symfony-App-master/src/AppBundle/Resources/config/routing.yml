@@ -1,0 +1,116 @@
+default_index:
+    path: /
+    defaults: { _controller: "AppBundle:Default:index"}
+    methods: GET
+
+user_login:
+    path: /login
+    defaults: { _controller: "AppBundle:User:login" }
+    methods: POST
+
+user_new:
+    path: /user/new
+    defaults: { _controller: "AppBundle:User:new" }
+    methods: POST
+
+Commande_list:
+    path: /orders/list
+    defaults: { _controller: "AppBundle:Order:orders"}
+    methods: POST
+
+class_homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Userclass:index }
+
+
+class_categoriespage:
+    path:     /categories
+    defaults: { _controller: AppBundle:Userclass:categories }
+
+class_produitspage:
+    path:     /produits
+    defaults: { _controller: AppBundle:Userclass:produits } 
+ 
+class_fournisseurpage:
+    path:     /fournisseur
+    defaults: { _controller: AppBundle:Userclass:fournisseur }    
+
+class_partenairespage:
+    path:     /partenaires
+    defaults: { _controller: AppBundle:Userclass:partenaires } 
+    
+
+class_getproduits_fournisseurpage:
+    path:     /getproduits_fournisseur
+    defaults: { _controller: AppBundle:Userclass:getproduits_fournisseur} 
+    methods : POST  
+
+class_getfournisseur_produitspage:
+    path:     /getfournisseur_produits/{id}
+    defaults: { _controller: AppBundle:Userclass:getfournisseur_produits} 
+    
+    
+class_getproduits_categoriepage:
+    path:     /getproduits_categorie/{id}
+    defaults: { _controller: AppBundle:Userclass:getproduits_categorie} 
+    
+    
+class_getcategorie_produitspage:
+    path:     /getcategorie_produits/{id}
+    defaults: { _controller: AppBundle:Userclass:getcategorie_produits}
+
+
+class_getproduits_commandepage:
+    path:     /getproduits_commande/{id}
+    defaults: { _controller: AppBundle:Userclass:getproduits_commande} 
+    
+    
+class_commandespage:
+    path:     /commandes
+    defaults: { _controller: AppBundle:Userclass:commandes }     
+
+Commande_new:
+    path: /orders/new
+    defaults: { _controller: "AppBundle:Order:new" }
+    methods: POST
+
+class_comptes:
+    path:   /admincomptes
+    defaults: { _controller: AppBundle:Admin:listecomptes }  
+    
+class_profile:
+    path:   /adminprofile
+    defaults: { _controller: AppBundle:Admin:profile }
+    
+class_produits:
+    path:   /adminproduits
+    defaults: { _controller: AppBundle:Admin:listeproduits } 
+
+class_commande:
+    path:   /admincommandes
+    defaults: { _controller: AppBundle:Admin:listecommandes }
+
+new:
+    path:     /produit/ajout/
+    defaults: { _controller: AppBundle:Admin:ajout }
+
+update:
+    path:     /produit/update/
+    defaults: { _controller: AppBundle:Admin:update_produit }
+
+delete:
+    path:     /produit/delete/
+    defaults: { _controller: AppBundle:Admin:delete_produit }
+
+
+
+class_getproduit_devispage:
+    path:     /getproduit_devis/{id}
+    defaults: { _controller: AppBundle:Admin:getproduit_devis} 
+
+delete_compte:
+    path:     /compte/delete/
+    defaults: { _controller: AppBundle:Admin:delete_compte }
+    
+
+

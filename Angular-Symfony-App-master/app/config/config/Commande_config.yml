@@ -1,0 +1,12 @@
+easy_admin:
+    disabled_actions: ['show']
+    entities:
+        Commande:
+            class: AppBundle\Entity\Commande
+            label: 'Liste des commande'
+            list:
+                fields:
+                    - "id"
+                    - "dateCommande"
+                    - "total"
+                    - "user"

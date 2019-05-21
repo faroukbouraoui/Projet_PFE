@@ -1,0 +1,41 @@
+public function forgotAction(Request $request){
+
+
+        $mail = new mail(); // objet vide
+        $form=$this->createFormBuilder($mail)->
+        add('mail',TextType::class,array('required'=>false,'attr'=>array('class'=>'form-controle','placeholder'=>"Email")))->
+
+        add('envoyer',SubmitType::class,array('label'=>'Envoyer','attr'=>array('class'=>'btn btn-success')))
+            ->getForm();
+        $form=$form->handleRequest($request);// Récuperation des données
+        if($form->isValid()&&$form->isSubmitted())// test if our form is valid
+        {
+
+
+            $email=$mail->getMail();
+            $em=$this->getDoctrine()->getManager();
+            $membre=$em->getRepository(membre::class)->findOneBy(array('email' => $email));
+
+
+$i=strrpos($membre->getPassword(),  '{' );
+
+            $username="mohamedheidibenkodjha@gmail.com";
+
+            /** @var TYPE_NAME $message */
+            $message=\Swift_Message::newInstance()
+                ->setSubject("Mot passe")
+                ->setFrom($username)
+                ->setTo($email)
+                ->setBody(substr($membre->getPassword(),0,(int)$i ));
+            $this->get('mailer')->send($message);
+            return $this->redirectToRoute('fos_user_security_login');
+
+
+
+        }
+        return $this->render('@Agenceadmin/template/forgot.html.twig', array('form'=>$form->createView()
+            // ...
+        ));
+
+
+    }
