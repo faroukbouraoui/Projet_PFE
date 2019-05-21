@@ -19,11 +19,9 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
-    "core-js": "^2.5.4",
-    "rxjs": "~6.3.3",
-    "tslib": "^1.9.0",
-    "zone.js": "~0.8.26",
+    "@ngx-pwa/local-storage": "^6.2.3",
     "bootstrap": "^4.1.3",
+    "core-js": "^2.5.4",
     "elegant-icons": "0.0.1",
     "font-awesome": "^4.7.0",
     "jarallax": "^1.10.6",
@@ -32,7 +30,10 @@
     "magnific-popup": "^1.1.0",
     "owl.carousel2": "^2.2.1",
     "popper.js": "^1.14.5",
-    "wowjs": "^1.1.3"
+    "rxjs": "~6.3.3",
+    "tslib": "^1.9.0",
+    "wowjs": "^1.1.3",
+    "zone.js": "~0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",

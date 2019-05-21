@@ -177,5 +177,104 @@ class UserclassController extends Controller
         return new Response($data);        
     }
 
+    public function ajout_commandeAction(Request $request){
+
+        
+        
+        $commande=new Commande;
+
+
+       // $idP =$request->get('id');
+        $dateCommande =$request->get('date_commande');
+        $centreLivraison =$request->get('centre_livraison');
+        $total =$request->get('total');
+        $user=$request->get('user');
+        $produit =$request->get('fournisseur');
+
+        $u = $this->getDoctrine()->getRepository('AppBundle:User')->findOneById($user);
+        $p = $this->getDoctrine()->getRepository('AppBundle:Produit')->findOneById($produit);
+
+
+        $commande->setDateCommande($dateCommande);
+        $commande->setCentreLivraison($centreLivraison);
+        $commande->setTotal($total);
+        
+        //$produit->setId($idP);
+
+
+        $commande->setUser($u);
+        $commande->setProduit($p);
+
+
+        $em=$this->getDoctrine()->getManager();
+        $em->persist($commande);
+        $em->flush();
+        return new JsonResponse(array(
+            'message' => "succ",
+            'code' => "2"
+        ), 200);
+        
+        
+
+}
+public function update_produitAction(Request $request)
+{
+    
+        $dateCommande =$request->get('date_commande');
+        $centreLivraison =$request->get('centre_livraison');
+        $total =$request->get('total');
+        $user=$request->get('user');
+        $produit =$request->get('fournisseur');
+
+        $u = $this->getDoctrine()->getRepository('AppBundle:User')->findOneById($user);
+        $p = $this->getDoctrine()->getRepository('AppBundle:Produit')->findOneById($produit);
+    
+
+
+if(!empty($dateCommande)){
+    $commande->setDateLivraison($dateCommande);
+}
+if(!empty($centreLivraison)){
+    $commande->setCentreLivraison($centreLivraison);
+}
+if(!empty($total)){
+    $commande->setTotal($total);
+}
+
+if(!empty($user)){
+    $commande->setUser($u);
+}
+if(!empty($produit)){
+    $commande->setProduit($p);
+}
+
+$em=$this->getDoctrine()->getManager();
+    $em->persist($commande);
+    $em->flush();
+    return new JsonResponse(array(
+        'message' => "succ",
+        'code' => "2"
+    ), 200);
+}
+public function delete_produitAction(Request $request)
+    {
+        $idC =$request->get('id');
+        $commande=$this->getDoctrine()->getRepository('AppBundle:Commande')->findOneById($idC);
+        if(empty($commande)){
+            return new JsonResponse(array(
+                'message' => "del erreur",
+                'code' => "2"
+            ), 200);
+        }else{
+            $em=$this->getDoctrine()->getManager();
+            $em->remove($commande);
+            $em->flush();
+            
+        }
+        return new JsonResponse(array(
+            'message' => "del succ",
+            'code' => "2"
+        ), 200);
+    }
 
 }
